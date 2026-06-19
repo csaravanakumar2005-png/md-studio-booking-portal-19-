@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Montserrat", sans-serif;
+  --font-accent: "Playfair Display", serif;
+  
+  --color-deep-navy: #06283D;
+  --color-dark-blue: #0A3D62;
+  --color-luxury-gold: #D4AF37;
+  --color-soft-gold: #F4D03F;
+  --color-footer-dark: #041C32;
+  --color-light-gray: #D6D6D6;
+}
+
+/* Base resets & styles matching image */
+html, body {
+  font-family: var(--font-sans);
+  background-color: var(--color-deep-navy);
+  color: #FFFFFF;
+}
+
+@layer utilities {
+  .gold-shimmer {
+    background: linear-gradient(90deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%);
+    background-size: 200% 100%;
+    animation: goldShimmerAnim 3s infinite linear;
+  }
+  .bg-grad-navy {
+    background: linear-gradient(135deg, #06283D 0%, #0A3D62 100%);
+  }
+  .bg-grad-gold {
+    background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 100%);
+  }
+}
+
+@keyframes goldShimmerAnim {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* MD Premium Button Effects */
+.btn-premium {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.btn-premium::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease-out;
+}
+
+.btn-premium:active::after {
+  transform: translate(-50%, -50%) scale(1);
+  transition: 0s;
+}
+
+.btn-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -10px rgba(212, 175, 55, 0.4);
+}
+
+.btn-premium:active {
+  transform: translateY(1px);
+}
+
+@media print {
+  body {
+    background-color: white !important;
+    background: white !important;
+    color: black !important;
+    font-size: 11pt !important;
+  }
+  #root, .no-print {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  #print-service-invoice {
+    display: block !important;
+    visibility: visible !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+@media screen {
+  #print-service-invoice {
+    display: none !important;
+  }
+}
+
+/* Custom design scrollbar styles */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #041C32;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #F4D03F;
+}
+

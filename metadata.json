@@ -1,0 +1,6 @@
+{
+  "name": "Photo Studio Booking",
+  "description": "Complete booking and management platform for professional studio services, custom equipment selection, package configuration, and advanced admin controls.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
